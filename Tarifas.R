@@ -55,3 +55,9 @@ Pago_mes_mod <- Base_internet_2025 %>%
   summarise(total=round (mean(renta_mensual_ci),2),Mbps=round(mean(velocidad_de_bajada),2)) %>% 
   ungroup()
 
+Pago_mes_mod_op <- Base_internet_2025 %>% 
+  filter(renta_mensual_ci !="NA") %>% 
+  mutate(renta_mensual_ci=as.numeric(renta_mensual_ci)) %>% 
+  group_by(mes, empaquetado, nombre_comercial) %>% 
+  summarise(total=round (mean(renta_mensual_ci),2),Mbps=round(mean(velocidad_de_bajada),2)) %>% 
+  ungroup()
